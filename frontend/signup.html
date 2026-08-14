@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Student Skills Exchange</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/signup.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-mark">
+                S
+            </div>
+
+            <div class="logo-text">
+                <strong>Student Skills</strong>
+                <span>Exchange</span>
+            </div>
+
+        </a>
+
+        <a href="index.html" class="back-home">
+            ← Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="signup-page">
+
+        <div class="signup-container">
+
+
+            <!-- ================= LEFT INTRO ================= -->
+
+            <section class="signup-intro">
+
+                <div class="intro-badge">
+
+                    <span class="status-dot"></span>
+
+                    JOIN SKILL EXCHANGE
+
+                </div>
+
+
+                <h1>
+
+                    Build your profile.
+
+                    <br>
+
+                    <span>
+                        Share what you know.
+                    </span>
+
+                    <br>
+
+                    Learn what you need.
+
+                </h1>
+
+
+                <p class="intro-description">
+
+                    Tell us about yourself, your skills and
+                    what you want to learn. SkillForge will
+                    help you find the right students to connect with.
+
+                </p>
+
+
+                <!-- FEATURES -->
+
+                <div class="intro-points">
+
+
+                    <div class="intro-point">
+
+                        <div class="point-icon">
+                            ✦
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Discover relevant students
+                            </strong>
+
+                            <p>
+                                Find people whose skills match
+                                what you want to learn.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="intro-point">
+
+                        <div class="point-icon">
+                            ⇄
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Exchange your skills
+                            </strong>
+
+                            <p>
+                                Teach something you know while
+                                learning something new.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="intro-point">
+
+                        <div class="point-icon">
+                            ◈
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                AI-powered matching
+                            </strong>
+
+                            <p>
+                                Get matched using your skills
+                                and learning requirements.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- TRUST -->
+
+                <div class="signup-trust">
+
+                    <div class="trust-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Built around student collaboration
+                        </strong>
+
+                        <span>
+                            Your profile can be completed and updated anytime.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= SIGNUP CARD ================= -->
+
+            <section class="signup-card">
+
+
+                <!-- HEADER -->
+
+                <div class="form-header">
+
+                    <div class="mobile-logo">
+                        S
+                    </div>
+
+                    <span class="form-eyebrow">
+                        GET STARTED
+                    </span>
+
+                    <h2>
+                        Create your account
+                    </h2>
+
+                    <p>
+                        Start with your basic details. You can
+                        update your profile later.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ================= FORM ================= -->
+
+                <form id="signupForm">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="firstName">
+                                First name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                placeholder="Sankalp"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="lastName">
+                                Last name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                placeholder="Sachan"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create a strong password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- COLLEGE -->
+
+                    <div class="form-group">
+
+                        <label for="college">
+                            College / University
+                        </label>
+
+                        <input
+                            type="text"
+                            id="college"
+                            placeholder="Your college name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- COURSE + YEAR -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="course">
+                                Course
+                            </label>
+
+                            <select
+                                id="course"
+                                required
+                            >
+
+                                <option value="">
+                                    Select course
+                                </option>
+
+                                <option>BCA</option>
+                                <option>B.Tech</option>
+                                <option>BBA</option>
+                                <option>B.Sc</option>
+                                <option>BA</option>
+                                <option>B.Com</option>
+                                <option>MCA</option>
+                                <option>M.Tech</option>
+                                <option>MBA</option>
+                                <option>Other</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="year">
+                                Year
+                            </label>
+
+                            <select
+                                id="year"
+                                required
+                            >
+
+                                <option value="">
+                                    Select year
+                                </option>
+
+                                <option>1st Year</option>
+                                <option>2nd Year</option>
+                                <option>3rd Year</option>
+                                <option>4th Year</option>
+                                <option>Postgraduate</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SKILLS -->
+
+                    <div class="form-group">
+
+                        <label for="skills">
+                            What can you teach?
+                        </label>
+
+                        <input
+                            type="text"
+                            id="skills"
+                            placeholder="Python, HTML, CSS, Canva..."
+                        >
+
+                        <small>
+                            Add multiple skills separated by commas.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- LEARNING -->
+
+                    <div class="form-group">
+
+                        <label for="learning">
+                            What do you want to learn?
+                        </label>
+
+                        <input
+                            type="text"
+                            id="learning"
+                            placeholder="JavaScript, React, AI..."
+                        >
+
+                        <small>
+                            We'll use this to find complementary students.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="btn-primary signup-btn"
+                        id="signupButton"
+                    >
+
+                        <span>
+                            Create account
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="signupMessage"
+                        class="signup-message"
+                        aria-live="polite"
+                    ></div>
+
+
+                </form>
+
+
+
+                <!-- DIVIDER -->
+
+                <div class="form-divider">
+
+                    <span></span>
+
+                    <small>
+                        ALREADY A MEMBER?
+                    </small>
+
+                    <span></span>
+
+                </div>
+
+
+
+                <!-- LOGIN -->
+
+                <div class="login-text">
+
+                    <span>
+                        Already have an account?
+                    </span>
+
+                    <a href="login.html">
+                        Sign in →
+                    </a>
+
+                </div>
+
+
+                <!-- SECURITY -->
+
+                <div class="secure-note">
+
+                    <span>
+                        🔒
+                    </span>
+
+                    Your information is securely handled.
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/signup.js"></script>
+
+</body>
+
+</html>

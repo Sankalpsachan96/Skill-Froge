@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | Student Skills Exchange</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <div class="logo-mark">
+            S
+        </div>
+
+        <span>
+            Student Skills<br>
+            Exchange
+        </span>
+
+    </div>
+
+
+    <nav class="side-nav">
+
+    <a href="#" class="active" data-view="dashboard">
+        <span>⌂</span>
+        <label>Dashboard</label>
+    </a>
+
+    <a href="#" data-view="profile">
+        <span>◉</span>
+        <label>Profile</label>
+    </a>
+
+    <a href="#" data-view="matches">
+        <span>◎</span>
+        <label>Find Matches</label>
+    </a>
+
+    <a href="#" data-view="exchange">
+        <span>⇄</span>
+        <label>Skill Exchange</label>
+    </a>
+
+    <a href="#" data-view="connections">
+        <span>♧</span>
+        <label>Connections</label>
+    </a>
+
+    <a href="#" data-view="messages">
+        <span>◌</span>
+        <label>Messages</label>
+    </a>
+
+    <a href="#" data-view="sessions">
+        <span>◷</span>
+        <label>Sessions</label>
+    </a>
+
+    <a href="#" data-view="history">
+        <span>▣</span>
+        <label>History</label>
+    </a>
+
+    <a href="#" data-view="doubt">
+        <span>?</span>
+        <label>Doubt Hub</label>
+    </a>
+
+    <a href="#" data-view="opportunities">
+        <span>✦</span>
+        <label>Opportunities</label>
+    </a>
+
+</nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="#">
+            <span>⚙</span>
+            Settings
+        </a>
+
+
+        <button
+            id="logoutBtn"
+            type="button"
+        >
+            <span>↪</span>
+            Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN DASHBOARD
+===================================================== -->
+
+<main class="dashboard-main">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================= -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <p class="page-label">
+                STUDENT DASHBOARD
+            </p>
+
+
+            <h1>
+                Good morning,
+                <span id="userName">
+                    Student
+                </span>
+                👋
+            </h1>
+
+
+            <p class="header-subtitle">
+                Find the right people. Learn. Collaborate. Grow.
+            </p>
+
+        </div>
+
+
+        <div class="header-profile">
+
+            <div
+                class="profile-avatar"
+                id="profileAvatar"
+            >
+                S
+            </div>
+
+
+            <div>
+
+                <strong id="profileName">
+                    Student
+                </strong>
+
+
+                <small id="profileCollege">
+                    College
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         QUICK ACTION
+    ================================================= -->
+
+    <section class="quick-actions">
+
+        <div class="action-card need-action">
+
+            <div class="action-icon">
+                🔍
+            </div>
+
+
+            <div class="action-content">
+
+                <span>
+                    I NEED
+                </span>
+
+
+                <h3>
+                    Find someone who can help
+                </h3>
+
+
+                <p>
+                    Need a teammate, skill or project partner?
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="openNeedModal()"
+            >
+                Tell us →
+            </button>
+
+        </div>
+
+
+        <div class="action-card can-action">
+
+            <div class="action-icon">
+                ✦
+            </div>
+
+
+            <div class="action-content">
+
+                <span>
+                    I CAN
+                </span>
+
+
+                <h3>
+                    Share what you know
+                </h3>
+
+
+                <p>
+                    Add skills you can teach to other students.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="openCanModal()"
+            >
+                Add skills →
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PROFILE + AI MATCH
+    ================================================= -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- PROFILE -->
+
+        <div class="dashboard-card profile-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="card-label">
+                        YOUR PROFILE
+                    </span>
+
+
+                    <h2>
+                        Student Profile
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="small-btn"
+                >
+                    Edit
+                </button>
+
+            </div>
+
+
+            <div class="profile-main">
+
+                <div
+                    class="large-avatar"
+                    id="largeAvatar"
+                >
+                    S
+                </div>
+
+
+                <div>
+
+                    <h3 id="fullName">
+                        Student Name
+                    </h3>
+
+
+                    <p id="courseInfo">
+                        Course • Year
+                    </p>
+
+
+                    <p id="collegeInfo">
+                        College
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-section">
+
+                <label>
+                    SKILLS I CAN OFFER
+                </label>
+
+
+                <div
+                    class="tag-container"
+                    id="skillsContainer"
+                >
+                </div>
+
+            </div>
+
+
+            <div class="profile-section">
+
+                <label>
+                    SKILLS I WANT TO LEARN
+                </label>
+
+
+                <div
+                    class="tag-container learning-tags"
+                    id="learningContainer"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- AI MATCH -->
+
+        <div class="dashboard-card ai-card">
+
+            <div class="ai-top">
+
+                <div>
+
+                    <span class="card-label">
+                        AI MATCHING
+                    </span>
+
+
+                    <h2>
+                        Find your people
+                    </h2>
+
+                </div>
+
+
+                <div class="ai-badge">
+                    ✦ AI
+                </div>
+
+            </div>
+
+
+            <div class="ai-visual">
+
+                <div class="ai-circle">
+                    <span>AI</span>
+                </div>
+
+
+                <div class="orbit orbit-1"></div>
+
+                <div class="orbit orbit-2"></div>
+
+            </div>
+
+
+            <p class="ai-description">
+                Tell us what you need and our AI will find
+                students with the most relevant skills and goals.
+            </p>
+
+
+            <button
+                type="button"
+                class="find-match-btn"
+                onclick="findMatches()"
+            >
+                Find AI Matches →
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         AI SKILL VERIFICATION
+    ================================================= -->
+
+    <section
+        class="dashboard-card skill-verification-section"
+        id="verification"
+    >
+
+        <div class="verification-header">
+
+            <div>
+
+                <span class="card-label">
+                    AI SKILL VERIFICATION
+                </span>
+
+
+                <h2>
+                    Prove what you can teach
+                </h2>
+
+
+                <p>
+                    Take a short AI-powered practical test.
+                    Your verified score can strengthen your profile
+                    and improve matching.
+                </p>
+
+            </div>
+
+
+            <div class="ai-badge">
+                ✦ AI Powered
+            </div>
+
+        </div>
+
+
+        <div class="verification-grid">
+
+
+            <div class="verification-card">
+
+                <div class="verification-title">
+
+                    <div class="verification-icon">
+                        🤖
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Verify your teaching skill
+                        </strong>
+
+
+                        <p>
+                            Python • 5 practical questions • about 2 minutes
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="verification-tags">
+
+                    <span>
+                        Knowledge
+                    </span>
+
+                    <span>
+                        Problem Solving
+                    </span>
+
+                    <span>
+                        Practical Skills
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    onclick="startSkillVerification('Python')"
+                >
+                    Verify Python with AI →
+                </button>
+
+            </div>
+
+
+
+            <div class="verification-status">
+
+                <span>
+                    CURRENT STATUS
+                </span>
+
+
+                <div id="verificationScore">
+                    —
+                </div>
+
+
+                <p id="verificationStatus">
+                    Not verified yet
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MATCHES
+    ================================================= -->
+
+    <section
+        class="dashboard-card matches-section"
+        id="matches"
+    >
+
+        <div class="section-top">
+
+            <div>
+
+                <span class="card-label">
+                    RECOMMENDED FOR YOU
+                </span>
+
+
+                <h2>
+                    Potential Matches
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="view-all-btn"
+                onclick="findMatches()"
+            >
+                View all →
+            </button>
+
+        </div>
+
+
+        <div
+            class="match-grid"
+            id="matchGrid"
+        >
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SKILL EXCHANGE
+    ================================================= -->
+
+    <section
+        class="dashboard-card exchange-section"
+        id="exchange"
+    >
+
+        <div class="section-top">
+
+            <div>
+
+                <span class="card-label">
+                    SKILL EXCHANGE
+                </span>
+
+
+                <h2>
+                    Complete the loop
+                </h2>
+
+
+                <p>
+                    Share what you can teach and what you want to learn.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="exchange-flow">
+
+
+            <!-- I CAN -->
+
+            <div
+                class="exchange-box"
+                onclick="openCanModal()"
+            >
+
+                <span>
+                    I CAN
+                </span>
+
+
+                <h3 id="exchangeCan">
+                    Add your skills
+                </h3>
+
+
+                <small>
+                    Skills you can teach
+                </small>
+
+            </div>
+
+
+
+            <!-- ARROW -->
+
+            <div class="exchange-arrow">
+                ⇄
+            </div>
+
+
+
+            <!-- I WANT -->
+
+            <div
+                class="exchange-box wanted"
+                onclick="openWantModal()"
+            >
+
+                <span>
+                    I WANT
+                </span>
+
+
+                <h3 id="exchangeWant">
+                    Add learning goals
+                </h3>
+
+
+                <small>
+                    Skills you want to learn
+                </small>
+
+            </div>
+
+
+
+            <!-- RESULT -->
+
+            <div class="exchange-result">
+
+                <strong>
+                    🤖 AI Mutual Exchange
+                </strong>
+
+
+                <p>
+                    AI will find students who can teach
+                    what you want and want what you can teach.
+                </p>
+
+
+                <button
+                    type="button"
+                    class="find-exchange-btn"
+                    onclick="findMutualExchange()"
+                >
+                    Find Mutual Exchange →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONNECTIONS
+    ================================================= -->
+
+    <section
+        class="dashboard-card connections-section"
+        id="connections"
+    >
+
+        <div class="section-top">
+
+            <div>
+
+                <span class="card-label">
+                    YOUR NETWORK
+                </span>
+
+
+                <h2>
+                    Connections
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- JS WILL RENDER REAL CONNECTIONS HERE -->
+
+        <div
+            id="connectedStudents"
+            class="connections-list"
+        >
+        </div>
+
+
+        <!-- EMPTY STATE -->
+
+        <div
+            id="connectionsEmpty"
+            class="empty-state"
+        >
+
+            <div class="empty-icon">
+                ♧
+            </div>
+
+
+            <h3>
+                Your network starts here
+            </h3>
+
+
+            <p>
+                Find your first AI match and start connecting
+                with students who share your goals.
+            </p>
+
+
+            <button
+                type="button"
+                class="btn-primary"
+                onclick="findMatches()"
+            >
+                Find Students →
+            </button>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     NEED MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="needModal"
+>
+
+    <div class="modal">
+
+        <button
+            type="button"
+            class="close-modal"
+            onclick="closeNeedModal()"
+        >
+            ×
+        </button>
+
+
+        <span class="card-label">
+            I NEED
+        </span>
+
+
+        <h2>
+            What are you looking for?
+        </h2>
+
+
+        <p>
+            Tell us naturally. AI will understand your requirement.
+        </p>
+
+
+        <textarea
+            id="needInput"
+            placeholder="Example: I need a React developer for a hackathon..."
+        ></textarea>
+
+
+        <button
+            type="button"
+            class="btn-primary modal-btn"
+            onclick="saveNeed()"
+        >
+            Continue to AI Matching →
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CAN MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="canModal"
+>
+
+    <div class="modal">
+
+        <button
+            type="button"
+            class="close-modal"
+            onclick="closeCanModal()"
+        >
+            ×
+        </button>
+
+
+        <span class="card-label">
+            I CAN
+        </span>
+
+
+        <h2>
+            What can you offer?
+        </h2>
+
+
+        <p>
+            Add skills that you can teach, use or provide.
+        </p>
+
+
+        <input
+            type="text"
+            id="canInput"
+            placeholder="Example: React, Python, UI/UX..."
+        >
+
+
+        <button
+            type="button"
+            class="btn-primary modal-btn"
+            onclick="saveSkills()"
+        >
+            Save Skills →
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     WANT MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="wantModal"
+>
+
+    <div class="modal">
+
+        <button
+            type="button"
+            class="close-modal"
+            onclick="closeWantModal()"
+        >
+            ×
+        </button>
+
+
+        <span class="card-label">
+            I WANT TO LEARN
+        </span>
+
+
+        <h2>
+            What do you want to learn?
+        </h2>
+
+
+        <p>
+            Add the skills you want to learn from another student.
+        </p>
+
+
+        <input
+            type="text"
+            id="wantInput"
+            placeholder="Example: React, Python, AI/ML"
+        >
+
+
+        <button
+            type="button"
+            class="btn-primary modal-btn"
+            onclick="saveLearning()"
+        >
+            Save Learning Goals →
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>

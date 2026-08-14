@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Student Skills Exchange</title>
+
+    <!-- Existing global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Login CSS -->
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-mark">
+                S
+            </div>
+
+            <div class="logo-text">
+                <strong>Student Skills</strong>
+                <span>Exchange</span>
+            </div>
+
+        </a>
+
+
+        <a href="index.html" class="back-home">
+            ← Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="login-page">
+
+        <div class="login-container">
+
+
+            <!-- ================= LEFT CONTENT ================= -->
+
+            <section class="login-intro">
+
+                <div class="intro-badge">
+                    <span class="status-dot"></span>
+                    STUDENT SKILLS EXCHANGE
+                </div>
+
+
+                <h1>
+                    Learn more.
+                    <br>
+
+                    <span>
+                        Share more.
+                    </span>
+
+                    <br>
+
+                    Grow together.
+                </h1>
+
+
+                <p class="intro-description">
+                    Connect with students who have the skills
+                    you need — and share what you already know.
+                </p>
+
+
+                <!-- FEATURE LIST -->
+
+                <div class="intro-points">
+
+                    <div class="intro-point">
+
+                        <div class="point-icon">
+                            ✦
+                        </div>
+
+                        <div>
+                            <strong>
+                                AI-powered matching
+                            </strong>
+
+                            <p>
+                                Find students with complementary
+                                skills and learning goals.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="intro-point">
+
+                        <div class="point-icon">
+                            ⇄
+                        </div>
+
+                        <div>
+                            <strong>
+                                Exchange skills
+                            </strong>
+
+                            <p>
+                                Teach what you know and learn
+                                what you want.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="intro-point">
+
+                        <div class="point-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>
+                                Build together
+                            </strong>
+
+                            <p>
+                                Connect, collaborate and work
+                                on real projects.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SMALL TRUST CARD -->
+
+                <div class="login-trust">
+
+                    <div class="trust-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>
+                            Built for students
+                        </strong>
+
+                        <span>
+                            Learn from people around you.
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= LOGIN CARD ================= -->
+
+            <section class="login-card">
+
+
+                <!-- CARD TOP -->
+
+                <div class="form-header">
+
+                    <div class="mobile-logo">
+                        S
+                    </div>
+
+                    <span class="form-eyebrow">
+                        WELCOME BACK
+                    </span>
+
+                    <h2>
+                        Sign in to your account
+                    </h2>
+
+                    <p>
+                        Enter your details to continue to Skill Exchange.
+                    </p>
+
+                </div>
+
+
+                <!-- ================= LOGIN FORM ================= -->
+
+                <form id="loginForm">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <div class="password-label">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a href="#" id="forgotPassword">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="btn-primary login-btn"
+                        id="loginButton"
+                    >
+
+                        <span>
+                            Sign in
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="loginMessage"
+                        class="login-message"
+                        aria-live="polite"
+                    ></div>
+
+                </form>
+
+
+
+                <!-- DIVIDER -->
+
+                <div class="form-divider">
+
+                    <span></span>
+
+                    <small>
+                        OR
+                    </small>
+
+                    <span></span>
+
+                </div>
+
+
+
+                <!-- SIGNUP -->
+
+                <div class="signup-text">
+
+                    <span>
+                        Don't have an account?
+                    </span>
+
+                    <a href="signup.html">
+                        Create your account →
+                    </a>
+
+                </div>
+
+
+                <!-- SECURITY -->
+
+                <div class="secure-note">
+
+                    <span>
+                        🔒
+                    </span>
+
+                    Your account information is securely handled.
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/login.js"></script>
+
+</body>
+
+</html>
