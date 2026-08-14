@@ -10,7 +10,7 @@
    ============================================================ */
 
 const API_BASE =
-    "http://127.0.0.1:8000";
+    "https://skillforge-backend-qzi6.onrender.com";;
 
 
 let currentStudentProfile = null;
@@ -5826,7 +5826,7 @@ async function sendChatMessage(studentId) {
 
         const response =
             await fetch(
-                "http://127.0.0.1:8000/api/messages",
+                "https://skillforge-backend-qzi6.onrender.com";,
                 {
                     method: "POST",
 
@@ -6071,7 +6071,7 @@ document.addEventListener(
    🤖 AI SKILL VERIFICATION
    ============================================================ */
 
-const SKILL_API = "http://127.0.0.1:8000";
+const SKILL_API = "https://skillforge-backend-qzi6.onrender.com";;
 
 let aiVerification = {
     skill: "Python",
