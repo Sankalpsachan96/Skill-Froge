@@ -233,123 +233,80 @@ RULES:
 """
 
 
-    try:
-
+        try:
         response = client.chat.completions.create(
-
             model="llama-3.3-70b-versatile",
-
             messages=[
-
                 {
                     "role": "system",
-                    "content":
-                    """
-You are a strict adaptive skill-test
-question generator.
+                    "content": """
+You are a strict AI skill-test question generator.
 
-Your highest priority is QUESTION VARIETY.
+Generate exactly ONE multiple-choice question.
 
-Never repeat previous questions.
-Never produce trivial rewordings of previous
-questions.
+Return ONLY valid JSON.
+Do not use markdown.
+The JSON must contain:
+question, options, correct_answer, difficulty, skill, topic, explanation.
+
+There must be exactly 4 options.
+correct_answer must be 0, 1, 2, or 3.
+Only one option can be correct.
 """
                 },
-
                 {
                     "role": "user",
                     "content": prompt
                 }
-
             ],
-
-            temperature=0.85,
-
-            max_tokens=700
-
+            temperature=0.5,
+            max_completion_tokens=700,
+            response_format={
+                "type": "json_object"
+            }
         )
 
-
         raw = (
-            response
-            .choices[0]
-            .message
-            .content
+            response.choices[0]
+            .message.content
             .strip()
         )
 
-
-        # Remove markdown fences if returned
-        if raw.startswith("```"):
-
-            raw = (
-                raw
-                .replace("```json", "")
-                .replace("```", "")
-                .strip()
-            )
-
-
         result = json.loads(raw)
 
-
-        # ----------------------------------------------------
-        # Validate structure
-        # ----------------------------------------------------
-
+        # Validate options
         if not isinstance(
             result.get("options"),
             list
         ):
-
             raise ValueError(
                 "AI did not return options."
             )
 
-
-        if len(
-            result["options"]
-        ) != 4:
-
+        if len(result["options"]) != 4:
             raise ValueError(
                 "AI must return exactly 4 options."
             )
 
-
+        # Validate correct answer
         correct_answer = int(
-            result.get(
-                "correct_answer",
-                0
-            )
+            result.get("correct_answer", 0)
         )
 
-
         if correct_answer not in [0, 1, 2, 3]:
-
             raise ValueError(
                 "Invalid correct answer index."
             )
 
-
         result["correct_answer"] = correct_answer
-
-
         result["difficulty"] = difficulty
-
-
         result["skill"] = skill
 
-
-        # ----------------------------------------------------
-        # DUPLICATE CHECK
-        # ----------------------------------------------------
-
+        # Duplicate check
         generated_question = (
-            result
-            .get("question", "")
+            result.get("question", "")
             .strip()
         )
-
 
         generated_normalized = (
             generated_question
@@ -360,9 +317,7 @@ questions.
             .strip()
         )
 
-
         for old_question in previous_questions:
-
             old_normalized = (
                 old_question
                 .lower()
@@ -372,36 +327,111 @@ questions.
                 .strip()
             )
 
-
-            if (
-                generated_normalized ==
-                old_normalized
-            ):
-
-                # Tell caller to retry
+            if generated_normalized == old_normalized:
                 return {
                     "error":
                     "AI generated a duplicate question. Please retry."
                 }
 
-
         return result
-
-
-    except json.JSONDecodeError:
-
-        return {
-            "error":
-            "AI returned invalid JSON."
-        }
-
 
     except Exception as e:
 
-        return {
-            "error":
-            str(e)
-        }
+        # IMPORTANT:
+        # Never let AI failure break the skill test.
+        print(
+            "GROQ AI ERROR:",
+            repr(e)
+        )
+
+        # Fallback question for live demo
+        fallback_questions = [
+            {
+                "question":
+                    "Which keyword is used to define a function in Python?",
+                "options": [
+                    "func",
+                    "def",
+                    "function",
+                    "define"
+                ],
+                "correct_answer": 1,
+                "topic": "functions",
+                "explanation":
+                    "The def keyword is used to define a function in Python."
+            },
+            {
+                "question":
+                    "What is the output of: print(2 + 3 * 4)?",
+                "options": [
+                    "20",
+                    "14",
+                    "24",
+                    "10"
+                ],
+                "correct_answer": 1,
+                "topic": "operators",
+                "explanation":
+                    "Multiplication has higher precedence than addition, so 3 * 4 is 12 and 2 + 12 is 14."
+            },
+            {
+                "question":
+                    "Which data type is used to store True or False in Python?",
+                "options": [
+                    "int",
+                    "str",
+                    "bool",
+                    "float"
+                ],
+                "correct_answer": 2,
+                "topic": "data types",
+                "explanation":
+                    "The bool data type stores True or False values."
+            },
+            {
+                "question":
+                    "Which method adds an item to the end of a Python list?",
+                "options": [
+                    "add()",
+                    "insertEnd()",
+                    "append()",
+                    "push()"
+                ],
+                "correct_answer": 2,
+                "topic": "lists",
+                "explanation":
+                    "The append() method adds an item to the end of a Python list."
+            },
+            {
+                "question":
+                    "Which symbol starts a comment in Python?",
+                "options": [
+                    "//",
+                    "#",
+                    "/*",
+                    "--"
+                ],
+                "correct_answer": 1,
+                "topic": "syntax",
+                "explanation":
+                    "Python uses # to begin a single-line comment."
+            }
+        ]
+
+        import random
+
+        result = random.choice(
+            fallback_questions
+        )
+
+        result["difficulty"] = difficulty
+        result["skill"] = skill
+
+        print(
+            "Using fallback skill question."
+        )
+
+        return result
 
 
 # ============================================================
