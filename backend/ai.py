@@ -233,107 +233,107 @@ RULES:
 """
 
 
-        try:
-        response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {
-                    "role": "system",
-                    "content": """
-You are a strict AI skill-test question generator.
-
-Generate exactly ONE multiple-choice question.
-
-Return ONLY valid JSON.
-Do not use markdown.
-The JSON must contain:
-question, options, correct_answer, difficulty, skill, topic, explanation.
-
-There must be exactly 4 options.
-correct_answer must be 0, 1, 2, or 3.
-Only one option can be correct.
-"""
-                },
-                {
-                    "role": "user",
-                    "content": prompt
+    try:
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": """
+    You are a strict AI skill-test question generator.
+    
+    Generate exactly ONE multiple-choice question.
+    
+    Return ONLY valid JSON.
+    Do not use markdown.
+    The JSON must contain:
+    question, options, correct_answer, difficulty, skill, topic, explanation.
+    
+    There must be exactly 4 options.
+    correct_answer must be 0, 1, 2, or 3.
+    Only one option can be correct.
+    """
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                temperature=0.5,
+                max_completion_tokens=700,
+                response_format={
+                    "type": "json_object"
                 }
-            ],
-            temperature=0.5,
-            max_completion_tokens=700,
-            response_format={
-                "type": "json_object"
-            }
-        )
-
-        raw = (
-            response.choices[0]
-            .message.content
-            .strip()
-        )
-
-        result = json.loads(raw)
-
-        # Validate options
-        if not isinstance(
-            result.get("options"),
-            list
-        ):
-            raise ValueError(
-                "AI did not return options."
             )
-
-        if len(result["options"]) != 4:
-            raise ValueError(
-                "AI must return exactly 4 options."
+    
+            raw = (
+                response.choices[0]
+                .message.content
+                .strip()
             )
-
-        # Validate correct answer
-        correct_answer = int(
-            result.get("correct_answer", 0)
-        )
-
-        if correct_answer not in [0, 1, 2, 3]:
-            raise ValueError(
-                "Invalid correct answer index."
+    
+            result = json.loads(raw)
+    
+            # Validate options
+            if not isinstance(
+                result.get("options"),
+                list
+            ):
+                raise ValueError(
+                    "AI did not return options."
+                )
+    
+            if len(result["options"]) != 4:
+                raise ValueError(
+                    "AI must return exactly 4 options."
+                )
+    
+            # Validate correct answer
+            correct_answer = int(
+                result.get("correct_answer", 0)
             )
-
-        result["correct_answer"] = correct_answer
-        result["difficulty"] = difficulty
-        result["skill"] = skill
-
-        # Duplicate check
-        generated_question = (
-            result.get("question", "")
-            .strip()
-        )
-
-        generated_normalized = (
-            generated_question
-            .lower()
-            .replace("?", "")
-            .replace(".", "")
-            .replace("!", "")
-            .strip()
-        )
-
-        for old_question in previous_questions:
-            old_normalized = (
-                old_question
+    
+            if correct_answer not in [0, 1, 2, 3]:
+                raise ValueError(
+                    "Invalid correct answer index."
+                )
+    
+            result["correct_answer"] = correct_answer
+            result["difficulty"] = difficulty
+            result["skill"] = skill
+    
+            # Duplicate check
+            generated_question = (
+                result.get("question", "")
+                .strip()
+            )
+    
+            generated_normalized = (
+                generated_question
                 .lower()
                 .replace("?", "")
                 .replace(".", "")
                 .replace("!", "")
                 .strip()
             )
-
-            if generated_normalized == old_normalized:
-                return {
-                    "error":
-                    "AI generated a duplicate question. Please retry."
-                }
-
-        return result
+    
+            for old_question in previous_questions:
+                old_normalized = (
+                    old_question
+                    .lower()
+                    .replace("?", "")
+                    .replace(".", "")
+                    .replace("!", "")
+                    .strip()
+                )
+    
+                if generated_normalized == old_normalized:
+                    return {
+                        "error":
+                        "AI generated a duplicate question. Please retry."
+                    }
+    
+            return result
 
     except Exception as e:
 
