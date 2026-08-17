@@ -5826,7 +5826,7 @@ async function sendChatMessage(studentId) {
 
         const response =
             await fetch(
-                "https://skillforge-backend-qzi6.onrender.com";,
+                "https://skillforge-backend-qzi6.onrender.com",
                 {
                     method: "POST",
 
